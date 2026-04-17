@@ -1,14 +1,16 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv'
 
-if(!process.env.MONGO_URI) {
-    throw new Error('MongoDB connection URI is not defined in environment variables')
+dotenv.config()
+
+if(!process.env.MONGO_URI){
+    throw new Error("MongoDb URI is not found in environment variable")
 }
-if(!process.env.JWT_TOKEN) {
-    throw new Error('JWT token is not defined in environment variables')
+
+if(!process.env.JWT_SECRET){
+    throw new Error('JWT secret is not found in environment variable')
 }
 
 export const config = {
     MONGO_URI: process.env.MONGO_URI,
-    JWT_TOKEN: process.env.JWT_TOKEN
+    JWT_SECRET: process.env.JWT_SECRET
 }
