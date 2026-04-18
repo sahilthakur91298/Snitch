@@ -8,6 +8,7 @@ function validateRequest(req,res,next){
             errors: errors.array()
         })
     }
+    next()
 }
 export const validateRegisterUser = [
     body("email")
@@ -22,5 +23,13 @@ export const validateRegisterUser = [
     .matches(/^\d{10}$/).withMessage('Contact number must be a valid 10-digit number'),
     body('isSeller')
     .isBoolean().withMessage('isSeller must be a boolean'),
+    validateRequest
+]
+
+export const validateLoginUser = [
+    body('email')
+    .isEmail().withMessage('Invalid Email address'),
+    body('password')
+    .notEmpty().withMessage('Password is required'),
     validateRequest
 ]

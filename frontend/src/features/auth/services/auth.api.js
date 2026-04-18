@@ -16,3 +16,12 @@ export async function register({fullname,email,password,contact,isSeller}){
 
     return response.data
 }
+
+export async function login({email, password}){
+    const response = await authAPI.post('/login',{
+        email,
+        password
+    })
+
+    return response.data
+}
