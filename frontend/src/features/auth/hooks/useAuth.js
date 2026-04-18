@@ -2,7 +2,7 @@ import {setUser,setLoading,setError} from '../state/auth.slice.js'
 import { register } from '../services/auth.api.js'
 import {useDispatch} from 'react-redux'
 
-const useAuth = ()=>{
+export const useAuth = ()=>{
     const dispatch = useDispatch()
 
     async function handleRegister({fullname,email,contact,password,isSeller = false}){
