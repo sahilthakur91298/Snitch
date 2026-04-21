@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../hooks/useAuth.js'
 import {useNavigate} from 'react-router-dom'
+import ContinueWithGoogle from '../components/continueWithGoogle.jsx'
 
 /* ── Icons ── */
 const EyeOpenIcon = () => (
@@ -264,7 +265,7 @@ const Register = () => {
               ⚠ {error}
             </p>
           )}
-
+       
           {/* CTA Button */}
           <button
             type="submit"
@@ -274,6 +275,7 @@ const Register = () => {
           >
             {loading ? 'Creating Account…' : 'Create Account'}
           </button>
+        <ContinueWithGoogle/>
         </form>
 
         {/* ── Footer link ── */}

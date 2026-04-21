@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth.js'
+import ContinueWithGoogle from '../components/continueWithGoogle.jsx'
 
 /* ── Icons ── */
 const EyeOpenIcon = () => (
@@ -198,6 +199,7 @@ const Login = () => {
             >
               {loading ? 'Signing In…' : 'Sign In'}
             </button>
+            <ContinueWithGoogle/>
           </form>
 
           {/* ── Footer link ── */}

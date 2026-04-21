@@ -12,9 +12,9 @@ async function tokenResponse(user,res,message){
 
     res.cookie('token', token, {
         httpOnly: true,
-        secure: false, // Set to true in production with HTTPS
+        secure: false, 
         sameSite: 'lax',
-        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+        maxAge: 7 * 24 * 60 * 60 * 1000 
     })
 
     return res.status(200).json({
@@ -94,4 +94,37 @@ export const login = async(req,res)=>{
             message: 'Server error'
         })
     }
+}
+
+export const googleCallback = async(req,res)=>{
+        const{id,displayName,emails,photos} = req.user
+        const email = emails[0].value
+        const profilePic = photos[0].value
+
+        let user = await userModel.findOne({
+            email
+        })
+        if(!user){
+            user = new userModel({
+                email,
+                fullname: displayName,
+                googleId: id
+            })
+        }
+
+        const token = jwt.sign({
+            id: req.user.id || req.user._id
+        }, config.JWT_SECRET, {
+            expiresIn: '7d'
+        });
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'lax',
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
+        console.log(req.user)
+        res.redirect("http://localhost:5173/");
+ 
 }
