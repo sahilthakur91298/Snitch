@@ -7,7 +7,7 @@ const App = () => {
       <h1 className="text-4xl font-bold tracking-[-0.03em] uppercase text-[#d4a017] mb-8">
         Snitch Home
       </h1>
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4 justify-center">
         <Link 
           to="/register" 
           className="bg-[#d4a017] text-[#0e0c08] border border-[#d4a017] px-6 py-3 uppercase tracking-[0.2em] font-bold hover:bg-[#e8b520] transition-colors"
@@ -19,6 +19,12 @@ const App = () => {
           className="bg-transparent text-[#d4a017] border border-[#d4a017] px-6 py-3 uppercase tracking-[0.2em] font-bold hover:bg-[#1a160d] transition-colors"
         >
           Go to Login
+        </Link>
+        <Link 
+          to="/seller/create-product" 
+          className="bg-transparent text-[#d4a017] border border-[#d4a017] px-6 py-3 uppercase tracking-[0.2em] font-bold hover:bg-[#1a160d] transition-colors"
+        >
+          Create Product
         </Link>
       </div>
     </div>
