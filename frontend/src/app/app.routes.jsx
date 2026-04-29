@@ -3,7 +3,7 @@ import Register from "../features/auth/pages/Register";
 import Login from "../features/auth/pages/Login";
 import App from "./App.jsx";
 import CreateProduct from "../features/products/pages/CreateProduct.jsx";
-
+import Dashboard from "../features/products/pages/Dashboard.jsx";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -18,7 +18,16 @@ export const router = createBrowserRouter([
         element: <Login/>
     },
     {
-        path: '/seller/create-product',
-        element: <CreateProduct/>
+        path: '/seller',
+        children: [
+            {
+                path: '/seller/create-product',
+                element: <CreateProduct/>
+            },
+            {
+                path: '/seller/dashboard',
+                element: <Dashboard/>
+            }
+        ]
     }
 ])
